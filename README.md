@@ -1,6 +1,7 @@
 🧑‍⚖️ Sistema Web para Escritório de Advocacia
 
 Sistema completo de gestão jurídica desenvolvido para escritórios de advocacia. Permite o cadastro e controle de clientes, casos, processos, atividades e agenda colaborativa, oferecendo organização, produtividade e visão estratégica para os advogados.
+
 🗂️ Sumário
 
     📌 Funcionalidades
@@ -113,6 +114,9 @@ Relacionamentos:
 🧑‍💻 Autores
 
 Desenvolvido por Gustavo Pinheiro
+
 Disciplina: Desenvolvimento Web II
+
 Professor: Luiz Efigênio
+
 Instituto Federal do Paraná – Campus Paranaguá
