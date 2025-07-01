@@ -75,7 +75,9 @@
             </a>
 
             <div>
-                <span class="text-muted me-3">Olá, {{ Auth::user()->nome }}</span>
+                @auth
+                    <span class="text-muted me-3">Olá, {{ Auth::user()->nome }}</span>
+                @endauth
                 <a href="{{ route('logout') }}" 
                    class="btn btn-sm btn-outline-danger"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
