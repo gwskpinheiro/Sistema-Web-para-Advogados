@@ -5,22 +5,15 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Cliente;
 use App\Models\Caso;
-use App\Models\Processo;
 
-class DatabaseSeeder extends Seeder
+class CasoSeeder extends Seeder
 {
     public function run(): void
     {
         $clientes = Cliente::all();
 
         foreach ($clientes as $cliente) {
-            // Criar de 1 a 5 casos para cada cliente
             Caso::factory()->count(rand(1, 5))->create([
-                'cliente_id' => $cliente->id,
-            ]);
-
-            // Criar de 1 a 5 processos para cada cliente
-            Processo::factory()->count(rand(1, 5))->create([
                 'cliente_id' => $cliente->id,
             ]);
         }
