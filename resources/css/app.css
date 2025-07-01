@@ -1,3 +1,172 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ========= Cores institucionais refinadas ========= */
+:root {
+    --cor-primaria: #2c3e50;
+    --cor-secundaria: #3498db;
+    --cor-secundaria-hover: #2980b9;
+    --cor-suave: #ecf0f1;
+    --cor-fundo: #f9f9fb;
+    --cor-sucesso: #28a745;
+    --cor-erro: #dc3545;
+    --cor-texto-claro: #ffffff;
+    --cor-texto-escuro: #333333;
+    --cor-borda-suave: #e0e0e0;
+}
+
+/* ========= Reset e base ========= */
+body {
+    background-color: var(--cor-fundo);
+    font-family: 'Libre Franklin', sans-serif;
+    color: var(--cor-primaria);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* ========= Títulos ========= */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--cor-primaria);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* ========= Botões modernos ========= */
+.btn-custom {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: all 0.25s ease;
+}
+
+.btn-custom:hover {
+    background-color: var(--cor-secundaria-hover);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.btn-outline-custom {
+    border: 2px solid var(--cor-secundaria);
+    color: var(--cor-secundaria);
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    transform: translateY(-1px);
+}
+
+/* ========= Cards refinados ========= */
+.card-custom {
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    background-color: #ffffff;
+    padding: 2rem;
+    transition: 0.3s ease;
+    border: 1px solid var(--cor-borda-suave);
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+}
+
+/* ========= Tabelas refinadas ========= */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.table-custom th {
+    background-color: var(--cor-secundaria);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.table-custom td {
+    background-color: #ffffff;
+    color: var(--cor-texto-escuro);
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--cor-borda-suave);
+}
+
+.table-custom tr:hover td {
+    background-color: #f4f8fc;
+}
+
+/* ========= Utilitários ========= */
+.text-sombra {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.text-juridico {
+    color: var(--cor-primaria);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.4px;
+}
+
+.rounded-soft {
+    border-radius: 12px !important;
+}
+
+.shadow-suave {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* ========= Rodapé elegante ========= */
+footer {
+    background-color: #f1f3f5;
+    font-size: 0.9rem;
+    color: #6c757d;
+    padding: 1.25rem 0;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+/* ========= Responsividade ========= */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn-custom, .btn-outline-custom {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .card-custom {
+        padding: 1rem;
+    }
+
+    .table-custom th, .table-custom td {
+        padding: 0.5rem;
+        font-size: 0.95rem;
+    }
+}

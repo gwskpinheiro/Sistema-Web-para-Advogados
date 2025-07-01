@@ -2,89 +2,118 @@
 @section('title', 'Sistema Jurídico')
 
 @section('content')
-<div class="container py-4">
-    <h2 class="text-primary text-center mb-4">Sistema de Gestão Jurídica</h2>
-    <p class="text-center mb-5">Bem-vindo ao seu ambiente seguro de trabalho. Gerencie clientes, casos, processos e compromissos com eficiência.</p>
+<div class="painel-home">
+    {{-- Cabeçalho --}}
+    <div class="area-header text-center">
+        <h2 class="text-juridico text-sombra">Sistema de Gestão Jurídica</h2>
+        <p class="text-muted">Administração eficiente de clientes, casos, processos e agenda.</p>
+    </div>
 
-    <div class="row justify-content-center">
-        <!-- Card: Advogados -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border border-primary">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-primary">Advogados</h5>
-                    <p class="card-text">Visualize e edite perfis de advogados cadastrados no sistema.</p>
-                    <a href="{{ route('advogado.users.index') }}" class="btn btn-outline-primary">Acessar</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card: Clientes -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border border-success">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-success">Clientes</h5>
-                    <p class="card-text">Gerencie os dados dos seus clientes e consulte seu histórico jurídico.</p>
-                    <a href="{{ route('advogado.clientes.index') }}" class="btn btn-outline-success">Acessar</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card: Casos -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border border-warning">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-warning">Casos</h5>
-                    <p class="card-text">Acompanhe os casos em andamento e registre novas ocorrências.</p>
-                    <a href="{{ route('advogado.casos.index') }}" class="btn btn-outline-warning">Acessar</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card: Processos -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border border-danger">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-danger">Processos</h5>
-                    <p class="card-text">Gerencie processos judiciais com controle completo de prazos e documentos.</p>
-                    <a href="{{ route('advogado.processos.index') }}" class="btn btn-outline-danger">Acessar</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card: Agenda -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border border-info">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-info">Agenda</h5>
-                    <p class="card-text">Visualize compromissos, prazos e reuniões jurídicas agendadas.</p>
-                    <a href="{{ route('advogado.agenda.index') }}" class="btn btn-outline-info">Acessar</a>
-                </div>
-            </div>
+    {{-- Card: Acesso Rápido --}}
+    <div class="area-left">
+        <div class="card-custom text-center shadow-suave">
+            <h6 class="text-juridico mb-3">Acesso Rápido</h6>
+            <a href="{{ route('advogado.users.index') }}" class="btn btn-outline-custom w-100 mb-2">👨‍⚖️ Advogados</a>
+            <a href="{{ route('advogado.clientes.index') }}" class="btn btn-outline-custom w-100">👥 Clientes</a>
         </div>
     </div>
 
-   <div class="mb-4">
-        <label for="clienteFiltro" class="form-label">Filtrar por Cliente:</label>
-        <select id="clienteFiltro" class="form-select w-auto">
-            <option value="">Todos os clientes</option>
-            @foreach(\App\Models\Cliente::orderBy('nome')->get() as $cliente)
-                <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
-            @endforeach
-        </select>
+    {{-- Card: Gestão Jurídica --}}
+    <div class="area-right">
+        <div class="card-custom text-center shadow-suave">
+            <h6 class="text-juridico mb-3">Gestão Jurídica</h6>
+            <a href="{{ route('advogado.casos.index') }}" class="btn btn-outline-custom w-100 mb-2">📁 Casos</a>
+            <a href="{{ route('advogado.processos.index') }}" class="btn btn-outline-custom w-100">🧾 Processos</a>
+        </div>
     </div>
 
-    {{-- GRÁFICO INTEGRADO NA HOME --}}
-    <div class="mt-5">
-        <h4 class="text-center mb-4">Gráfico de Casos e Processos por Cliente</h4>
-        <div class="card shadow">
-            <div class="card-body">
-                <div id="grafico-wrapper">
-                    <canvas id="graficoCasosProcessos" height="100"></canvas>
-                </div>
+    {{-- Centro: Agenda + gráfico --}}
+    <div class="area-main">
+        <div class="card-custom w-100 shadow-suave text-center">
+            <h5 class="text-primary fw-bold mb-2">📅 Agenda</h5>
+            <p class="text-muted">Compromissos e tarefas jurídicas organizadas em um só lugar.</p>
+            <a href="{{ route('advogado.agenda.index') }}" class="btn btn-custom mt-2 mb-4">Acessar Agenda</a>
+
+            <hr>
+            <h6 class="text-juridico mt-3">Distribuição por Cliente</h6>
+           <div class="d-flex justify-content-center">
+                <canvas id="graficoCasosProcessos" width="280" height="220" style="max-width: 100%;"></canvas>
+            </div>
+            <div class="d-flex justify-content-center">
+                <select id="clienteFiltro" class="form-select w-50 rounded-soft">
+                    <option value="">Todos os clientes</option>
+                    @foreach(\App\Models\Cliente::orderBy('nome')->get() as $cliente)
+                        <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+.painel-home {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    grid-template-areas:
+        "header header header"
+        "left main right";
+    gap: 20px;
+    padding: 20px;
+}
+
+.area-header {
+    grid-area: header;
+}
+
+.area-left {
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.area-right {
+    grid-area: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-end;
+}
+
+.area-main {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.grafico-box {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .painel-home {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "left"
+            "right";
+    }
+
+    .area-left,
+    .area-right {
+        align-items: center;
+    }
+
+    .grafico-box {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
 @endsection
 
 @section('scripts')
@@ -96,34 +125,29 @@
         fetch(`{{ route('advogado.graficos') }}?cliente_id=${clienteId}`)
             .then(response => response.json())
             .then(data => {
-                const wrapper = document.getElementById('grafico-wrapper');
-                wrapper.innerHTML = '<canvas id="graficoCasosProcessos" height="100"></canvas>';
                 const ctx = document.getElementById('graficoCasosProcessos');
-
-                if (grafico) {
-                    grafico.destroy();
-                }
+                if (grafico) grafico.destroy();
 
                 grafico = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: data.labels,
-                        datasets: [
-                            {
-                                label: 'Casos',
-                                data: data.casos,
-                                backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                                borderColor: 'rgba(54, 162, 235, 1)',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'Processos',
-                                data: data.processos,
-                                backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
-                                borderWidth: 1
-                            }
-                        ]
+                        labels: ['Casos', 'Processos'],
+                        datasets: [{
+                            label: 'Quantidade',
+                            data: [
+                                data.casos.reduce((a, b) => a + b, 0),
+                                data.processos.reduce((a, b) => a + b, 0)
+                            ],
+                            backgroundColor: [
+                                'rgba(47, 128, 237, 0.7)',
+                                'rgba(231, 76, 60, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(47, 128, 237, 1)',
+                                'rgba(231, 76, 60, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
                     },
                     options: {
                         responsive: true,
@@ -132,15 +156,26 @@
                             y: {
                                 beginAtZero: true,
                                 ticks: {
-                                    precision: 0
+                                    stepSize: 1
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Quantidade'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Tipo'
                                 }
                             }
                         },
                         plugins: {
-                            legend: { position: 'top' },
-                            title: {
-                                display: true,
-                                text: 'Quantidade de Casos e Processos por Cliente'
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                enabled: true
                             }
                         }
                     }
@@ -150,10 +185,10 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         carregarGrafico();
-
         document.getElementById('clienteFiltro').addEventListener('change', function () {
             carregarGrafico(this.value);
         });
     });
 </script>
 @endsection
+
