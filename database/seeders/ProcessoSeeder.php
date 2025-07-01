@@ -3,18 +3,20 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Cliente;
-use App\Models\Processo;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ProcessoSeeder extends Seeder
 {
     public function run(): void
     {
-        $clientes = Cliente::all();
-
-        foreach ($clientes as $cliente) {
-            Processo::factory()->count(rand(1, 5))->create([
-                'cliente_id' => $cliente->id,
+        for ($i = 1; $i <= 20; $i++) {
+            DB::table('processos')->insert([
+                'numero_processo' => '2025'.str_pad((string)$i, 6, '0', STR_PAD_LEFT),
+                'descricao' => 'Processo judicial relacionado à demanda nº '.$i,
+                'cliente_id' => rand(1, 10),
+                'created_at' => Carbon::now()->subDays(rand(0, 90)),
+                'updated_at' => Carbon::now(),
             ]);
         }
     }
