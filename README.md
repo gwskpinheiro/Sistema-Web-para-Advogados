@@ -1,66 +1,118 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🧑‍⚖️ Sistema Web para Escritório de Advocacia
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema completo de gestão jurídica desenvolvido para escritórios de advocacia. Permite o cadastro e controle de clientes, casos, processos, atividades e agenda colaborativa, oferecendo organização, produtividade e visão estratégica para os advogados.
+🗂️ Sumário
 
-## About Laravel
+    📌 Funcionalidades
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    🛠 Tecnologias Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    ⚙️ Instalação e Execução
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    🧪 Casos de Uso Implementados
 
-## Learning Laravel
+    🧬 Modelagem de Dados
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    🚀 Funcionalidades Extras
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    🧑‍💻 Autores
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+📌 Funcionalidades
 
-## Laravel Sponsors
+✅ Cadastro de advogados com autenticação e controle de acesso
+✅ Cadastro e gerenciamento de clientes
+✅ Registro e acompanhamento de casos vinculados aos clientes
+✅ Gerenciamento de processos judiciais com numeração única
+✅ Agenda colaborativa entre advogados com filtros e visualização por dia
+✅ Inserção de comentários por atividade/evento (comunicação interna)
+✅ Gráficos com análise de casos e processos por cliente
+✅ Design responsivo e interface refinada para uso profissional
+🛠 Tecnologias Utilizadas
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    PHP 8+ / Laravel 10
 
-### Premium Partners
+    MySQL – Banco de dados relacional
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    Blade + Bootstrap 5 – Templates e layout responsivo
 
-## Contributing
+    Chart.js – Gráficos interativos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    Laravel Breeze – Autenticação leve e rápida
 
-## Code of Conduct
+    Form Requests – Validações robustas
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    Middleware personalizado – Controle de acesso
 
-## Security Vulnerabilities
+    SoftDeletes + timestamps – Auditoria e exclusão lógica
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    Seeders e Migrations – Popular dados e estruturar banco
 
-## License
+⚙️ Instalação e Execução
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 1. Clonar o repositório
+git clone https://github.com/gwskpinheiro/Sistema-Web-para-Advogados.git
+cd sistema-advocacia
+
+# 2. Instalar dependências PHP e JS
+composer install
+npm install && npm run dev
+
+# 3. Copiar o arquivo de ambiente e configurar
+cp .env.example .env
+# Edite o .env com as informações do seu banco de dados
+
+# 4. Gerar chave da aplicação
+php artisan key:generate
+
+# 5. Rodar migrations e seeders
+php artisan migrate --seed
+
+# 6. Iniciar o servidor de desenvolvimento
+php artisan serve
+
+🧪 Casos de Uso Implementados
+Caso de Uso	Descrição
+Login/Registro de Advogados	Autenticação com controle de permissões e sessões
+Gerenciar Clientes	CRUD com filtros, busca e validações
+Gerenciar Casos	Casos vinculados a clientes, com título, status e descrição
+Gerenciar Processos	Processos jurídicos com número, status e vínculo com cliente
+Agenda do Escritório	Criação, visualização e filtro de compromissos por data, tipo e autor
+Comentários em Atividades	Comunicação interna por evento/atividade
+Gráfico por Cliente	Dashboard com gráficos de distribuição de casos e processos
+
+🧬 Modelagem de Dados
+
+    User (Advogado) – Com autenticação, permissões e agenda
+
+    Cliente – Nome, contato e histórico de casos/processos
+
+    Caso – Relacionado a um cliente (1:N)
+
+    Processo – Relacionado a um cliente (1:N)
+
+    Atividade – Data, título, responsável e tipo (evento/tarefa)
+
+    Comentário – Ligado a uma atividade, com autor e conteúdo
+
+Relacionamentos:
+✔️ 1:1 e 1:N
+✔️ SoftDeletes e Timestamps automáticos
+✔️ Integridade garantida via foreign keys
+🚀 Funcionalidades Extras
+
+    🔄 Filtros dinâmicos na agenda (por tipo, status, responsável)
+
+    📊 Gráficos interativos com Chart.js 
+
+    💬 Comentários internos nas atividades
+
+    🎨 Design profissional e responsivo com identidade visual jurídica
+
+    👤 Controle de autoria e acompanhamento de designações
+
+🧑‍💻 Autores
+
+Desenvolvido por Gustavo Pinheiro
+Disciplina: Desenvolvimento Web II
+Professor: Luiz Efigênio
+Instituto Federal do Paraná – Campus Paranaguá
