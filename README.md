@@ -21,12 +21,19 @@ Sistema completo de gestão jurídica desenvolvido para escritórios de advocaci
 📌 Funcionalidades
 
 ✅ Cadastro de advogados com autenticação e controle de acesso
+
 ✅ Cadastro e gerenciamento de clientes
+
 ✅ Registro e acompanhamento de casos vinculados aos clientes
+
 ✅ Gerenciamento de processos judiciais com numeração única
+
 ✅ Agenda colaborativa entre advogados com filtros e visualização por dia
+
 ✅ Inserção de comentários por atividade/evento (comunicação interna)
+
 ✅ Gráficos com análise de casos e processos por cliente
+
 ✅ Design responsivo e interface refinada para uso profissional
 
 🛠 Tecnologias Utilizadas
