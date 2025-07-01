@@ -28,6 +28,7 @@ Sistema completo de gestão jurídica desenvolvido para escritórios de advocaci
 ✅ Inserção de comentários por atividade/evento (comunicação interna)
 ✅ Gráficos com análise de casos e processos por cliente
 ✅ Design responsivo e interface refinada para uso profissional
+
 🛠 Tecnologias Utilizadas
 
     PHP 8+ / Laravel 10
@@ -72,6 +73,7 @@ php artisan migrate --seed
 php artisan serve
 
 🧪 Casos de Uso Implementados
+
 Caso de Uso	Descrição
 Login/Registro de Advogados	Autenticação com controle de permissões e sessões
 Gerenciar Clientes	CRUD com filtros, busca e validações
@@ -99,6 +101,7 @@ Relacionamentos:
 ✔️ 1:1 e 1:N
 ✔️ SoftDeletes e Timestamps automáticos
 ✔️ Integridade garantida via foreign keys
+
 🚀 Funcionalidades Extras
 
     🔄 Filtros dinâmicos na agenda (por tipo, status, responsável)
