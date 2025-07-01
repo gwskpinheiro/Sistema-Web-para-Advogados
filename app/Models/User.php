@@ -24,13 +24,21 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function eventos(): HasMany
-    {
-        return $this->hasMany(Evento::class);
-    }
-
+    // Atividades atribuídas a este advogado
     public function atividades(): HasMany
     {
         return $this->hasMany(Atividade::class);
+    }
+
+   
+    public function atividadesCriadas(): HasMany
+    {
+        return $this->hasMany(Atividade::class, 'autor_id');
+    }
+
+    
+    public function comentarios(): HasMany
+    {
+        return $this->hasMany(Comentario::class);
     }
 }

@@ -2,42 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Evento;
 use App\Models\Atividade;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Support\Collection;
 
 class AgendaController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $eventos = Evento::with(['user', 'caso', 'processo'])->get();
-        $atividades = Atividade::with(['user', 'caso', 'processo'])->get();
+        $query = Atividade::with(['user', 'autor'])
+            ->orderBy('data_hora');
 
-        $itens = $eventos->map(function ($evento) {
-            return [
-                'tipo' => 'Evento',
-                'titulo' => $evento->titulo,
-                'descricao' => $evento->descricao,
-                'data' => $evento->data_hora->format('Y-m-d'),
-                'hora' => $evento->data_hora->format('H:i'),
-                'user' => $evento->user->nome ?? '',
-                'cliente' => $evento->caso->cliente->nome ?? $evento->processo->cliente->nome ?? '',
-            ];
-        })->merge($atividades->map(function ($atividade) {
-            return [
-                'tipo' => 'Atividade',
-                'titulo' => $atividade->titulo,
-                'descricao' => $atividade->descricao,
-                'data' => $atividade->data_hora->format('Y-m-d'),
-                'hora' => $atividade->data_hora->format('H:i'),
-                'user' => $atividade->user->nome ?? '',
-                'cliente' => $atividade->caso->cliente->nome ?? $atividade->processo->cliente->nome ?? '',
-            ];
-        }));
+        // Filtros opcionais
+        if ($request->filled('user_id')) {
+            $query->where('user_id', $request->user_id);
+        }
 
-        $agenda = $itens->sortBy('data')->groupBy('data');
+        if ($request->filled('tipo')) {
+            $query->where('tipo', $request->tipo);
+        }
 
-        return view('agenda.index', compact('agenda'));
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('autor_id')) {
+            $query->where('autor_id', $request->autor_id);
+        }
+
+        $atividades = $query->get();
+        $users = User::orderBy('nome')->get();
+
+        return view('atividades.agenda', compact('atividades', 'users'));
     }
 }

@@ -8,8 +8,8 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CasoController;
 use App\Http\Controllers\ProcessoController;
 use App\Http\Controllers\AgendaController;
-
-use App\Http\Middleware\IsAdvogado; 
+use App\Http\Controllers\AtividadeController; // ✅ Adicionado
+use App\Http\Middleware\IsAdvogado;
 
 // Redireciona a raiz para o login
 Route::get('/', fn () => redirect('/login'));
@@ -33,6 +33,15 @@ Route::middleware(['auth', IsAdvogado::class])->prefix('advogado')->name('advoga
     Route::resource('casos', CasoController::class);
     Route::resource('processos', ProcessoController::class);
     Route::get('agenda', [AgendaController::class, 'index'])->name('agenda.index');
+
+
+    Route::resource('atividades', AtividadeController::class);
+
+    Route::post('atividades/{atividade}/concluir', [AtividadeController::class, 'marcarComoConcluida'])
+        ->name('atividades.concluir');
+
+    Route::post('atividades/{atividade}/comentarios', [AtividadeController::class, 'adicionarComentario'])
+        ->name('atividades.comentarios.store');
 });
 
 // Perfil do usuário logado

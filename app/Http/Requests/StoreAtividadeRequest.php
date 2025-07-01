@@ -20,6 +20,8 @@ class StoreAtividadeRequest extends FormRequest
             'user_id' => 'required|exists:users,id',
             'caso_id' => 'nullable|exists:casos,id',
             'processo_id' => 'nullable|exists:processos,id',
+            'tipo' => 'required|in:tarefa,evento',
         ];
     }
+
 }
