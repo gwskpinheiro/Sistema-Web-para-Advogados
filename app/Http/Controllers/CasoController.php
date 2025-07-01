@@ -13,39 +13,42 @@ class CasoController extends Controller
 {
     public function index(): View
     {
-        return view('casos.index', ['casos' => Caso::with('cliente')->get()]);
+        return view('advogado.casos.index', ['casos' => Caso::with('cliente')->get()]);
     }
 
     public function create(): View
     {
-        return view('casos.create', ['clientes' => Cliente::all()]);
+        return view('advogado.casos.create', ['clientes' => Cliente::all()]);
     }
 
     public function store(StoreCasoRequest $request): RedirectResponse
     {
         Caso::create($request->validated());
-        return redirect()->route('casos.index')->with('success', 'Caso criado com sucesso.');
+        return redirect()->route('advogado.casos.index')->with('success', 'Caso criado com sucesso.');
     }
 
     public function show(Caso $caso): View
     {
-        return view('casos.show', compact('caso'));
+        return view('advogado.casos.show', compact('caso'));
     }
 
     public function edit(Caso $caso): View
     {
-        return view('casos.edit', ['caso' => $caso, 'clientes' => Cliente::all()]);
+        return view('advogado.casos.edit', [
+            'caso' => $caso,
+            'clientes' => Cliente::all()
+        ]);
     }
 
     public function update(UpdateCasoRequest $request, Caso $caso): RedirectResponse
     {
         $caso->update($request->validated());
-        return redirect()->route('casos.index')->with('success', 'Caso atualizado com sucesso.');
+        return redirect()->route('advogado.casos.index')->with('success', 'Caso atualizado com sucesso.');
     }
 
     public function destroy(Caso $caso): RedirectResponse
     {
         $caso->delete();
-        return redirect()->route('casos.index')->with('success', 'Caso excluído com sucesso.');
+        return redirect()->route('advogado.casos.index')->with('success', 'Caso excluído com sucesso.');
     }
 }

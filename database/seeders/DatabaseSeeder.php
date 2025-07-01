@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'titulo' => 'Aluno']);
     }
+    
 
     //   attach
     // $user->roles()->attach(1);

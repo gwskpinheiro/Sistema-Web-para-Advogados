@@ -11,12 +11,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', compact('users'));
+        return view('advogado.users.index', compact('users'));
     }
 
     public function create()
     {
-        return view('users.create');
+        return view('advogado.users.create');
     }
 
     public function store(Request $request)
@@ -30,20 +30,21 @@ class UserController extends Controller
         User::create([
             'nome' => $request->nome,
             'email' => $request->email,
+            'telefone' => $request->telefone,
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso!');
+        return redirect()->route('advogado.users.index')->with('success', 'Usuário criado com sucesso!');
     }
 
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        return view('advogado.users.show', compact('user'));
     }
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        return view('advogado.users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
@@ -53,14 +54,14 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
         ]);
 
-        $user->update($request->only(['nome', 'email']));
+        $user->update($request->only(['nome', 'email', 'telefone']));
 
-        return redirect()->route('users.index')->with('success', 'Usuário atualizado!');
+        return redirect()->route('advogado.users.index')->with('success', 'Usuário atualizado!');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'Usuário excluído!');
+        return redirect()->route('advogado.users.index')->with('success', 'Usuário excluído!');
     }
 }
